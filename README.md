@@ -1,7 +1,7 @@
 # UOVS 研究：Earth2Ocean / UOVSBench 调研与实验方案
 
 - 主文档：[`docs/uovs_research_plan.md`](docs/uovs_research_plan.md)。包括新核查到的事实、交接包审阅、文献核对、线 B / 线 C 实验方案、共享基础设施和按周计划。
-- 几何与多源融合调研：[`docs/geometry_fusion_research.md`](docs/geometry_fusion_research.md)。讨论怎样真正利用深度/几何特征、怎样做多源特征融合，包括正负证据分类、方案卡片（含预设的通过/放弃标准）、排除"通用特征更强"的对照设计。
+- 几何与多源融合调研：[`docs/geometry_fusion_research.md`](docs/geometry_fusion_research.md)。讨论怎样真正利用深度/几何特征、怎样做多源特征融合。v2 的证据基础限定为 2022–2026 年分割领域与垂直领域顶会（逐篇标注 venue，非顶会文献只作附录线索），包括正负证据分类、方案卡片（含预设的通过/放弃标准）、排除"通用特征更强"的对照设计。
 - 脚本（`scripts/`）：
 
 | 脚本 | 用途 |
