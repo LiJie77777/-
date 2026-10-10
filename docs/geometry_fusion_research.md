@@ -1,6 +1,7 @@
 # 怎样真正利用几何/深度特征，以及怎样做多源特征融合：基于近年顶会的调研与候选方案（v2）
 
 > 日期：2026-10-10。读者：导师、执行同学、跑实验的同学。分支 `claude/busy-bohr-kkw7nd`。
+> **后续更新不在这里。** 本报告已迁到 [paper-research-agent/reports/geometry_fusion_research.md](https://github.com/LiJie77777/paper-research-agent/blob/main/reports/geometry_fusion_research.md)，每日调研结果整合进那一份；这里保留 v2 快照。
 > **v2 改动**：按你的要求，证据基础改为"2022–2026 年分割领域顶会和垂直领域顶会"（纳入标准见 §1）。v1 中的 arXiv 预印本和普通期刊论文移到附录 C，只作为线索，不作为结论依据。§1.2 逐篇列出 v1 引用的重新分级。
 > 与请求 1 报告 [`docs/uovs_research_plan.md`](uovs_research_plan.md) 配套使用。脚本：`scripts/dump_depth_cache.py`、`scripts/prevalidate_depth_figure_ground.py`、`scripts/e2o_patches/geo_affinity.py`，测试在 `scripts/tests/`。
 > 标注约定：

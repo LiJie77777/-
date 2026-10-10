@@ -1,4 +1,0 @@
-# crontab -e  (times in the server's timezone; arXiv announces new papers around 00:00 UTC Sun–Thu)
-# Daily at 09:40 Beijing time (01:40 UTC), weekly on Sunday at 11:10.
-40 9 * * *  $HOME/rafeed-code/research_agent/run_daily.sh  >> $HOME/.cache/rafeed/cron.log 2>&1
-10 11 * * 0 $HOME/rafeed-code/research_agent/run_weekly.sh >> $HOME/.cache/rafeed/cron.log 2>&1
