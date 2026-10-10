@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:arxiv="http://arxiv.org/schemas/atom">
+  <title>ArXiv Query</title>
+  <entry>
+    <id>http://arxiv.org/abs/2610.01234v2</id>
+    <published>2026-10-08T17:59:59Z</published>
+    <title>Depth-Gated Attention for Training-Free
+      Open-Vocabulary Segmentation</title>
+    <summary>We study how monocular depth can modulate the attention of CLIP for training-free
+      open-vocabulary semantic segmentation.</summary>
+    <author><name>Ada Lovelace</name></author>
+    <author><name>Alan Turing</name></author>
+    <arxiv:comment>Accepted to CVPR 2026 Findings. 12 pages</arxiv:comment>
+    <link href="http://arxiv.org/abs/2610.01234v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2610.01234v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category term="cs.CV"/>
+    <category term="cs.CV"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.05678v1</id>
+    <published>2026-10-09T10:00:00Z</published>
+    <title>A Survey of Large Language Model Agents</title>
+    <summary>We survey agents built on large language models.</summary>
+    <author><name>Grace Hopper</name></author>
+    <arxiv:comment>30 pages</arxiv:comment>
+    <link title="pdf" href="http://arxiv.org/pdf/2610.05678v1" rel="related" type="application/pdf"/>
+    <category term="cs.CL"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.09999v1</id>
+    <published>2026-10-09T11:00:00Z</published>
+    <title>Underwater Salient Object Segmentation with Relative Depth Order</title>
+    <summary>Relative depth order separates marine animals from water background for salient segmentation.</summary>
+    <author><name>Rachel Carson</name></author>
+    <link title="pdf" href="http://arxiv.org/pdf/2610.09999v1" rel="related" type="application/pdf"/>
+    <category term="cs.CV"/>
+  </entry>
+</feed>

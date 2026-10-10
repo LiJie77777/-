@@ -1,0 +1,5 @@
+[["export.arxiv.org/api/query", "arxiv.xml"],
+ ["api2.openreview.net/notes", "openreview.json"],
+ ["/content/CVPR2026/html/Smith_", "cvf_paper.html"],
+ ["openaccess.thecvf.com/CVPR2026", "cvf.html"],
+ ["dblp.org/search/publ/api", "dblp.json"]]

@@ -1,0 +1,219 @@
+# rafeed 配置。改这里就能调整调研范围；脚本不需要改。
+# 标注"【待服务器验证】"的条目，是本机（云端）网络受限、无法实测的地方，首次运行时看日志确认。
+
+[project]
+name = "UOVS：几何/深度特征与多源特征融合"
+contact = "you@example.com"     # 写进 User-Agent。arXiv/dblp 等希望自动化客户端留联系方式
+min_year = 2022
+
+[codex]
+model = "gpt-6-sol"             # 也可用 gpt-6.1-sol（同价，缓存输入更便宜）；run_*.sh 里可用 CODEX_MODEL 覆盖
+screen_chunk = 120              # 每次 Codex 筛选的条数
+max_deep_reads_per_day = 4
+max_deep_reads_per_week = 12    # 周任务额外精读的上限
+max_paper_chars = 150000        # 交给模型的正文上限（去掉参考文献后）；整篇输入应低于 272K token 的加价线
+
+[http.min_interval]             # 同一主机两次请求的最小间隔（秒）
+"export.arxiv.org" = 3.1        # arXiv API 条款：每 3 秒最多 1 次、单连接
+"arxiv.org" = 3.1
+"api.semanticscholar.org" = 1.1 # 有 key 时 1 rps
+"dblp.org" = 2.0                # dblp FAQ：连续请求间隔 1–2 秒，429 时按 Retry-After 等待
+"api2.openreview.net" = 1.0
+"openreview.net" = 1.0
+"openaccess.thecvf.com" = 1.0
+"www.ecva.net" = 1.0
+"*" = 1.0
+
+[arxiv]
+categories = ["cs.CV", "cs.LG", "cs.RO", "eess.IV", "cs.MM"]
+window_days = 3                 # 每天回看 3 天的提交，周末/公告延迟也不会漏；重复的会被去重
+max_results = 3000
+
+[verify]
+max_dblp_per_run = 150
+recheck_days = 30               # "待核实"的相关论文每 30 天重查一次 venue（会议论文集上线后自动升级）
+max_recheck_per_run = 100
+
+[snowball]                      # 周任务：沿引用图扩展（Semantic Scholar citations + references）
+max_papers_per_run = 30
+max_neighbors_per_paper = 2000
+min_relevance = 2
+repeat_days = 28
+# 种子 = v2 报告精读过的顶会论文（arXiv 号）
+seeds = [
+  "arXiv:2511.07923", "arXiv:2510.15398", "arXiv:2511.18452", "arXiv:2511.19704", "arXiv:2506.09881",
+  "arXiv:2411.16319", "arXiv:2411.10086", "arXiv:2411.09219", "arXiv:2504.04701", "arXiv:2411.17150",
+  "arXiv:2410.01768", "arXiv:2503.19777", "arXiv:2503.18393", "arXiv:2406.09414", "arXiv:2309.09668",
+  "arXiv:2407.20229", "arXiv:2311.11241", "arXiv:2408.04883", "arXiv:2401.10891", "arXiv:2404.08636",
+  "arXiv:2309.12378", "arXiv:2312.12471", "arXiv:2212.05370", "arXiv:2204.01678",
+]
+
+[s2]
+# 扩展检索（resolve）时的 venue 过滤。Semantic Scholar 的 venue 名需精确匹配【待服务器验证】；
+# 若返回 0 条，把这一行注释掉，靠 verify 步骤做 venue 核实即可。
+venues = ["CVPR", "ICCV", "ECCV", "NeurIPS", "ICLR", "ICML", "AAAI", "IJCAI", "ACM Multimedia",
+          "MICCAI", "ICRA", "IROS"]
+
+[prefilter]
+# 关键词按整词匹配（fusion 不会命中 diffusion），末尾带 * 表示前缀匹配（geometr* 命中 geometry/geometric）。
+# 有摘要时，标题+摘要须至少含一个下列词（仅有标题的会议列表条目，等补到摘要后再判断）
+require = ["segment*", "dense prediction", "mask*", "matting", "parsing", "salien*", "camouflag*",
+           "scene understanding", "open-vocabulary", "open vocabulary"]
+
+[topics.geometry]
+desc = "深度/几何在 2D 分割中的用法：显式深度、深度不连续、3D 邻近、法向、3D 感知特征、RGB-D/伪深度融合"
+include = ["depth", "depths", "geometr*", "3d-aware", "3d aware", "rgb-d", "rgbd", "surface normal*",
+           "disparit*", "point cloud*", "monocular", "stereo", "3d feature*", "3d prior*"]
+
+[topics.ovss]
+desc = "免训练/开放词汇语义分割：CLIP 改造、代理注意力、VFM 协同、无监督分割"
+include = ["open-vocabulary", "open vocabulary", "training-free", "training free", "zero-shot",
+           "clip", "unsupervised semantic segmentation", "unsupervised segmentation", "language-guided"]
+
+[topics.fusion]
+desc = "多源特征融合：多个基础模型（CLIP/DINO/SAM/RADIO/深度模型）的特征、注意力或决策融合"
+include = ["fusion", "fuse", "fusing", "multi-source", "multi-modal feature*", "agglomerat*", "foundation model*",
+           "dinov2", "dino", "segment anything", "sam", "sam2", "radio", "multiple teachers", "feature aggregation"]
+
+[topics.underwater]
+desc = "水下/海洋视觉：分割、显著性、深度估计、图像复原（垂直领域）"
+include = ["underwater", "marine", "ocean*", "coral*", "sea floor", "seafloor", "seabed", "aquatic", "sonar",
+           "fish", "fishes"]
+
+[topics.upsampling]
+desc = "特征上采样与边界精修：图像引导上采样、JBU、VFM 特征超分"
+include = ["upsampl*", "feature resolution", "joint bilateral", "high-resolution feature*", "boundary refine*"]
+
+[venues]
+top = ["CVPR", "ICCV", "ECCV", "NeurIPS", "ICLR", "ICML", "AAAI", "IJCAI", "ACMMM"]
+vertical = ["MICCAI", "ICRA", "IROS"]
+
+[venues.aliases]
+CVPR = ["cvpr", "conference on computer vision and pattern recognition", "computer vision and pattern recognition"]
+ICCV = ["iccv", "international conference on computer vision"]
+ECCV = ["eccv", "european conference on computer vision"]
+NeurIPS = ["neurips", "nips", "neural information processing systems"]
+ICLR = ["iclr", "international conference on learning representations"]
+ICML = ["icml", "international conference on machine learning"]
+AAAI = ["aaai"]
+IJCAI = ["ijcai", "international joint conference on artificial intelligence"]
+ACMMM = ["acm multimedia", "acm mm", "acm international conference on multimedia"]
+MICCAI = ["miccai", "medical image computing and computer assisted intervention"]
+ICRA = ["icra", "international conference on robotics and automation"]
+IROS = ["iros", "intelligent robots and systems"]
+
+# ---------------------------------------------------------------- 官方录用列表（venue 直接算"已核实"）
+# 每天检查一次：列表变长（新一届论文集上线）就把新增论文送去筛选。返回 0 篇的列表不影响运行，
+# 那一届的论文改由 dblp 核实。OpenReview 只列 API v2 时代的届次。
+[[listings]]
+kind = "openreview"
+venueid = "ICLR.cc/2026/Conference"
+venue = "ICLR"
+year = 2026
+[[listings]]
+kind = "openreview"
+venueid = "ICLR.cc/2025/Conference"
+venue = "ICLR"
+year = 2025
+[[listings]]
+kind = "openreview"
+venueid = "ICLR.cc/2024/Conference"
+venue = "ICLR"
+year = 2024
+[[listings]]
+kind = "openreview"
+venueid = "NeurIPS.cc/2026/Conference"
+venue = "NeurIPS"
+year = 2026
+[[listings]]
+kind = "openreview"
+venueid = "NeurIPS.cc/2025/Conference"
+venue = "NeurIPS"
+year = 2025
+[[listings]]
+kind = "openreview"
+venueid = "NeurIPS.cc/2024/Conference"
+venue = "NeurIPS"
+year = 2024
+[[listings]]
+kind = "openreview"
+venueid = "NeurIPS.cc/2023/Conference"
+venue = "NeurIPS"
+year = 2023
+[[listings]]
+kind = "openreview"
+venueid = "ICML.cc/2026/Conference"
+venue = "ICML"
+year = 2026
+[[listings]]
+kind = "openreview"
+venueid = "ICML.cc/2025/Conference"
+venue = "ICML"
+year = 2025
+[[listings]]
+kind = "ptitle"
+url = "https://openaccess.thecvf.com/CVPR2026?day=all"
+href_contains = "/content/CVPR2026/"
+venue = "CVPR"
+year = 2026
+[[listings]]
+kind = "ptitle"                 # CVPR 2026 Findings 赛道；列表页地址【待服务器验证】（论文路径为 /content/CVPR2026F/）
+url = "https://openaccess.thecvf.com/CVPR2026F?day=all"
+href_contains = "/content/CVPR2026F/"
+venue = "CVPR"
+year = 2026
+track = "findings"
+[[listings]]
+kind = "ptitle"
+url = "https://openaccess.thecvf.com/CVPR2025?day=all"
+href_contains = "/content/CVPR2025/"
+venue = "CVPR"
+year = 2025
+[[listings]]
+kind = "ptitle"
+url = "https://openaccess.thecvf.com/CVPR2024?day=all"
+href_contains = "/content/CVPR2024/"
+venue = "CVPR"
+year = 2024
+[[listings]]
+kind = "ptitle"
+url = "https://openaccess.thecvf.com/CVPR2023?day=all"
+href_contains = "/content/CVPR2023/"
+venue = "CVPR"
+year = 2023
+[[listings]]
+kind = "ptitle"
+url = "https://openaccess.thecvf.com/CVPR2022?day=all"
+href_contains = "/content/CVPR2022/"
+venue = "CVPR"
+year = 2022
+[[listings]]
+kind = "ptitle"
+url = "https://openaccess.thecvf.com/ICCV2025?day=all"
+href_contains = "/content/ICCV2025/"
+venue = "ICCV"
+year = 2025
+[[listings]]
+kind = "ptitle"
+url = "https://openaccess.thecvf.com/ICCV2023?day=all"
+href_contains = "/content/ICCV2023/"
+venue = "ICCV"
+year = 2023
+[[listings]]
+kind = "ptitle"
+url = "https://www.ecva.net/papers.php"
+href_contains = "eccv_2026"
+venue = "ECCV"
+year = 2026
+[[listings]]
+kind = "ptitle"
+url = "https://www.ecva.net/papers.php"
+href_contains = "eccv_2024"
+venue = "ECCV"
+year = 2024
+[[listings]]
+kind = "ptitle"
+url = "https://www.ecva.net/papers.php"
+href_contains = "eccv_2022"
+venue = "ECCV"
+year = 2022

@@ -1,0 +1,10 @@
+{"offset": 0, "data": [
+ {"citingPaper": {"paperId": "s2aaa", "title": "Relative Depth Cues for Open-Vocabulary Segmentation of Marine Scenes",
+   "year": 2026, "abstract": "We use relative depth to improve open-vocabulary segmentation of underwater images.",
+   "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+   "publicationVenue": {"name": "Computer Vision and Pattern Recognition"},
+   "externalIds": {"ArXiv": "2601.00001", "DBLP": "conf/cvpr/Foo26"}, "authors": [{"name": "Foo"}],
+   "publicationDate": "2026-06-01", "url": "https://www.semanticscholar.org/paper/s2aaa"}},
+ {"citingPaper": {"paperId": "s2bbb", "title": "Protein Folding with Transformers", "year": 2025,
+   "abstract": "Biology.", "venue": "", "externalIds": {}, "authors": []}}
+]}

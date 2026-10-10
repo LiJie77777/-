@@ -1,0 +1,353 @@
+{
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "id",
+  "one_line",
+  "problem",
+  "method",
+  "setting",
+  "geometry_use",
+  "claims",
+  "negative_or_limits",
+  "controls",
+  "relevance",
+  "rule_links",
+  "open_questions"
+ ],
+ "properties": {
+  "id": {
+   "type": "string"
+  },
+  "one_line": {
+   "type": "string"
+  },
+  "problem": {
+   "type": "string"
+  },
+  "method": {
+   "type": "string"
+  },
+  "setting": {
+   "type": "string",
+   "enum": [
+    "training-free",
+    "light-training",
+    "training"
+   ]
+  },
+  "geometry_use": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "info",
+    "injection",
+    "notes"
+   ],
+   "properties": {
+    "info": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "I0",
+       "I1",
+       "I2",
+       "I3",
+       "I4",
+       "I5",
+       "I6",
+       "none"
+      ]
+     }
+    },
+    "injection": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "input",
+       "attention",
+       "post",
+       "region",
+       "training_signal",
+       "none"
+      ]
+     }
+    },
+    "notes": {
+     "type": "string"
+    }
+   }
+  },
+  "claims": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "claim",
+     "kind",
+     "quote",
+     "location",
+     "numbers"
+    ],
+    "properties": {
+     "claim": {
+      "type": "string"
+     },
+     "kind": {
+      "type": "string",
+      "enum": [
+       "positive",
+       "negative",
+       "neutral"
+      ]
+     },
+     "quote": {
+      "type": "string"
+     },
+     "location": {
+      "type": "string"
+     },
+     "numbers": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "metric",
+        "dataset",
+        "value",
+        "baseline",
+        "setting"
+       ],
+       "properties": {
+        "metric": {
+         "type": "string"
+        },
+        "dataset": {
+         "type": "string"
+        },
+        "value": {
+         "type": "string"
+        },
+        "baseline": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "setting": {
+         "type": "string"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "negative_or_limits": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "claim",
+     "kind",
+     "quote",
+     "location",
+     "numbers"
+    ],
+    "properties": {
+     "claim": {
+      "type": "string"
+     },
+     "kind": {
+      "type": "string",
+      "enum": [
+       "positive",
+       "negative",
+       "neutral"
+      ]
+     },
+     "quote": {
+      "type": "string"
+     },
+     "location": {
+      "type": "string"
+     },
+     "numbers": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "metric",
+        "dataset",
+        "value",
+        "baseline",
+        "setting"
+       ],
+       "properties": {
+        "metric": {
+         "type": "string"
+        },
+        "dataset": {
+         "type": "string"
+        },
+        "value": {
+         "type": "string"
+        },
+        "baseline": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "setting": {
+         "type": "string"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "controls": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "same_arch_non_geometric",
+    "spatial_only",
+    "shuffled_or_mismatched_depth",
+    "duplicate_feature_or_capacity",
+    "depth_quality_variation",
+    "notes"
+   ],
+   "properties": {
+    "same_arch_non_geometric": {
+     "type": "string",
+     "enum": [
+      "yes",
+      "no",
+      "unclear",
+      "na"
+     ]
+    },
+    "spatial_only": {
+     "type": "string",
+     "enum": [
+      "yes",
+      "no",
+      "unclear",
+      "na"
+     ]
+    },
+    "shuffled_or_mismatched_depth": {
+     "type": "string",
+     "enum": [
+      "yes",
+      "no",
+      "unclear",
+      "na"
+     ]
+    },
+    "duplicate_feature_or_capacity": {
+     "type": "string",
+     "enum": [
+      "yes",
+      "no",
+      "unclear",
+      "na"
+     ]
+    },
+    "depth_quality_variation": {
+     "type": "string",
+     "enum": [
+      "yes",
+      "no",
+      "unclear",
+      "na"
+     ]
+    },
+    "notes": {
+     "type": "string"
+    }
+   }
+  },
+  "relevance": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "score",
+    "to_project",
+    "which_cards"
+   ],
+   "properties": {
+    "score": {
+     "type": "integer",
+     "enum": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    "to_project": {
+     "type": "string"
+    },
+    "which_cards": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "rule_links": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "rule",
+     "stance",
+     "why"
+    ],
+    "properties": {
+     "rule": {
+      "type": "string",
+      "enum": [
+       "R1",
+       "R2",
+       "R3",
+       "R4",
+       "R5",
+       "R6",
+       "R7",
+       "R8"
+      ]
+     },
+     "stance": {
+      "type": "string",
+      "enum": [
+       "supports",
+       "contradicts",
+       "refines"
+      ]
+     },
+     "why": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "open_questions": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  }
+ }
+}

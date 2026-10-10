@@ -1,0 +1,12 @@
+{"result": {"hits": {"@total": "3", "hit": [
+ {"info": {"authors": {"author": [{"@pid": "1", "text": "Rachel Carson"}]},
+   "title": "Underwater Salient Object Segmentation with Relative Depth Order.",
+   "venue": "CoRR", "year": "2026", "type": "Informal and Other Publications",
+   "key": "journals/corr/abs-2610-09999", "url": "https://dblp.org/rec/journals/corr/abs-2610-09999"}},
+ {"info": {"authors": {"author": {"@pid": "1", "text": "Rachel Carson"}},
+   "title": "Underwater Salient Object Segmentation with Relative Depth Order.",
+   "venue": "ICCV", "year": "2025", "type": "Conference and Workshop Papers",
+   "key": "conf/iccv/Carson25", "doi": "10.1109/ICCV.2025.00001", "url": "https://dblp.org/rec/conf/iccv/Carson25"}},
+ {"info": {"title": "Something Else Entirely.", "venue": "CVPR Workshops", "year": "2024",
+   "type": "Conference and Workshop Papers", "key": "conf/cvpr/Else24"}}
+]}}}

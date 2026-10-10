@@ -1,0 +1,62 @@
+{
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "items"
+ ],
+ "properties": {
+  "items": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "id",
+     "relevance",
+     "topics",
+     "evidence_type",
+     "deep_read",
+     "reason"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "relevance": {
+      "type": "integer",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     "topics": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "evidence_type": {
+      "type": "string",
+      "enum": [
+       "method",
+       "positive",
+       "negative",
+       "analysis",
+       "benchmark",
+       "survey",
+       "other"
+      ]
+     },
+     "deep_read": {
+      "type": "boolean"
+     },
+     "reason": {
+      "type": "string"
+     }
+    }
+   }
+  }
+ }
+}

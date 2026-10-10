@@ -1,0 +1,15 @@
+Depth-Gated Attention for Training-Free Open-Vocabulary Segmentation
+
+Abstract
+We study how monocular depth can modulate the attention of CLIP.
+
+4.2 Ablation
+Adding the depth gate improves mIoU from 40.87 to 42.31 on ADE20K, while a spatial-only
+prior already reaches 41.95, which suggests that most of the gain comes from locality.
+Recognition accuracy is unchanged (80.02 vs. 80.00) when depth fea-
+tures are added to the classifier.
+
+Table 3: Results on SUIM. Our method obtains 58.0 mIoU.
+
+References
+[1] A. Author. Some paper. 2020.
