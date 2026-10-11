@@ -2,6 +2,7 @@
 
 - 主文档：[`docs/uovs_research_plan.md`](docs/uovs_research_plan.md)。包括新核查到的事实、交接包审阅、文献核对、线 B / 线 C 实验方案、共享基础设施和按周计划。
 - 几何与多源融合调研：[`docs/geometry_fusion_research.md`](docs/geometry_fusion_research.md)。讨论怎样真正利用深度/几何特征、怎样做多源特征融合。v2 的证据基础限定为 2022–2026 年分割领域与垂直领域顶会（逐篇标注 venue，非顶会文献只作附录线索），包括正负证据分类、方案卡片（含预设的通过/放弃标准）、排除"通用特征更强"的对照设计。
+- 组件组合方式调研：[`docs/composition_research.md`](docs/composition_research.md)。发散调研 training-free 分割里各种组件可以在哪些阶段、用什么算子组合，包括扩展的阶段表（新增区域单元、图像级类先验、跨图直推、闭环校验）、15 个框架家族的组合机制与"能否输出背景"、44 条组合思路清单、6 个优先检验的组合卡片（含前置验证与预设判据、公平对照设计）、12 项补测诊断。
 - 每日调研 agent 已迁到独立仓库 [LiJie77777/paper-research-agent](https://github.com/LiJie77777/paper-research-agent)（代码、设计文档、整合 skill）。几何融合调研报告此后也在那里的 `reports/` 下更新。
 - 脚本（`scripts/`）：
 
